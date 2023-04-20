@@ -1,54 +1,6 @@
-import React, { useState } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import { SafeAreaView, Text, StyleSheet, Image, View, TextInput } from 'react-native';
+import { StyleSheet } from "react-native";
 
-
-export default function Login({ navigation }){
-
-    const [userName, setUserName] = useState('');
-    const [userPassword, setUserPassword] = useState('');
-
-    return(
-        <SafeAreaView style={homeStyle.container} >
-            <LinearGradient colors={["#5AB98B", "#60ABA7"]} style={homeStyle.gradient}>
-                <Image source={require('../imgs/logo.png')} style={homeStyle.logoImg} />
-
-                <View style={homeStyle.forms}>
-                    <Text style={homeStyle.labelInput} >username</Text>
-                    <TextInput style={homeStyle.input}
-                    placeholder='usuário'
-                    text={userName}
-                    onChangeText={setUserName}
-                    ></TextInput>
-                    <Text style={homeStyle.labelInput} >senha</Text>
-                    <TextInput style={homeStyle.input}
-                    placeholder='senha'
-                    ></TextInput>
-                </View>
-
-                <View 
-                style={homeStyle.containerLogin}
-                >
-                    <View 
-                    style={homeStyle.buttonLogin}
-                    onStartShouldSetResponder={() => navigation.navigate('Home') }
-                    >
-                        <Text style={homeStyle.textLogin} 
-                        >login</Text>
-                    </View>
-
-                    <Text style={homeStyle.labelInput}>sign up</Text>
-
-                </View>
-
-                
-            </LinearGradient>
-
-        </SafeAreaView>
-    );
-}
-
-const homeStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         alignItems: 'center',
@@ -74,6 +26,12 @@ const homeStyle = StyleSheet.create({
         marginBottom: '5%'
     },
 
+    logoImgSignup:{
+        marginTop: '-14%',
+        height: '35%',
+        width: '35%'
+    },
+
     forms:{
         width: "100%",
         display: "flex",
@@ -96,6 +54,15 @@ const homeStyle = StyleSheet.create({
         marginBottom: '1%',
         borderRadius: 5,
         
+    },
+    inputSignup:{
+        width: '100%',
+        height: '15%',
+        borderBottomWidth: 3,
+        borderBottomColor: '#FFFFFF',
+        fontSize: 15,
+        borderRadius: 5
+
     },
     containerLogin:{
         display: "flex",
@@ -142,5 +109,14 @@ const homeStyle = StyleSheet.create({
         elevation: 15,
         borderColor: '#724983'
     },
+    arrowBack:{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        width: "100%",
+        alignContent: 'flex-start',
+        marginTop: "1%",
+        marginLeft: "1%"
+    }
 
 })
