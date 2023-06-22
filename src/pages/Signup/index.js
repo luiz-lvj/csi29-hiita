@@ -1,16 +1,47 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Image, SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { styles } from "../components/stylesLogin";
 import { Icon } from "@rneui/themed";
+import {BASE_API} from "@env";
+import axios from "axios";
 
 
 export default function Signup({ navigation }){
 
     const [userName, setUserName] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const [age, setAge] = useState(0);
+    const [cpf, setCpf] = useState(0);
     const [email, setEmail] = useState('');
+
+
+    function handleRegister(){
+        if(userName == "" || userPassword == "" || cpf == 0 || email == ""){
+            Alert.alert("Erro", "Preencha todos os campos");
+            return;
+        }
+        const body = {
+            "name": userName,
+            "password": userPassword,
+            "username": cpf,
+            "email": email
+        }
+        const url = `${BASE_API}/HIITA/register`;
+        console.log(url)
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(body),
+        })
+        .then((response) => {
+            Alert("Sucesso", "Usuário cadastrado com sucesso");
+            console.log(response)
+            navigation.navigate('Login');
+        })
+        .catch((error) => {
+            console.log(error)
+            Alert.alert("Erro", "Erro ao cadastrar usuário");
+        });
+    }
 
 
     return(
@@ -31,17 +62,14 @@ export default function Signup({ navigation }){
                     />
                 </View>
   
-
-
-
                 <Image 
                 source={require('../../imgs/logo.png')} style={styles.logoImgSignup} />
                 <View style={styles.forms}>
-                    <Text style={styles.labelInput} >age</Text>
+                    <Text style={styles.labelInput} >CPF</Text>
                     <TextInput style={styles.inputSignup}
-                    placeholder='idade'
-                    text={age}
-                    onChangeText={setAge}
+                    placeholder='CPF'
+                    text={cpf}
+                    onChangeText={setCpf}
                     ></TextInput>
                     <Text style={styles.labelInput} >Name</Text>
                     <TextInput style={styles.inputSignup}
@@ -69,7 +97,7 @@ export default function Signup({ navigation }){
                 >
                     <View
                     style={styles.buttonLogin}
-                    onStartShouldSetResponder={() => navigation.navigate('Home') }
+                    onStartShouldSetResponder={handleRegister}
                     >
                         <Text style={styles.textLogin}
                         >Signup</Text>

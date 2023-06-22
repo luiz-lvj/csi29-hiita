@@ -10,10 +10,10 @@ export default function Login({ navigation }){
     const [userPassword, setUserPassword] = useState('');
 
     async function handleLogin(){
-        if(userName != "Luiz" || userPassword != "123"){
-            Alert.alert("Erro", "Usuário ou senha inválidos");
-            return;
-        }
+        // if(userName != "Luiz" || userPassword != "123"){
+        //     Alert.alert("Erro", "Usuário ou senha inválidos");
+        //     return;
+        // }
         navigation.navigate('Home');
     }
 

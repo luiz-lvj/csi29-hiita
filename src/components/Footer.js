@@ -20,7 +20,7 @@ export default function Footer({ navigation }) {
                 <Icon
                 color="#FFFFFF"
                 name="person-outline"
-                onPress={() => navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Profile")}
                 size={40}
                 type="ionicons"
                 />

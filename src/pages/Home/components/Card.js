@@ -1,21 +1,28 @@
 
+import { useRoute } from "@react-navigation/native";
 import { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Checkbox } from "react-native-paper";
 
 export default function Card({ navigation, name,  description }){
     const [checked, setChecked] = useState(false);
+    //get path navigation
+    const route = useRoute();
+    const path = route.name;
 
     return(
-        <View style={styles.container} >
+        <View 
+        onStartShouldSetResponder={() => navigation.navigate("Exercises")}
+        style={styles.container} >
             <View style={styles.line}>
                 <Text style={styles.name} >{name}</Text>
+                {path ==="Exercises" &&
                 <Checkbox
                 status={checked ? 'checked' : 'unchecked'}
                 onPress={() => {
                     setChecked(!checked);
                 }}
-                />
+                />}
             </View>
             <Text style={styles.description} >{description}</Text>
             
