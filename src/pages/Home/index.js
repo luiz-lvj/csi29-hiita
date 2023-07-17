@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Card from "./components/Card";
 
-export default function Home({ navigation }){
+export default function Home({ navigation, userType }){
 
     const treinos = [
         {"name": "Treino 1", "description": "Treino de peito e costas"},
@@ -18,7 +18,7 @@ export default function Home({ navigation }){
         <SafeAreaView  style={styles.container} >
             <Header navigation={navigation} />
             
-            <Text style={ styles.title } >Seja bem vindo, Luiz</Text>
+            <Text style={ styles.title } >Seja bem vindo, {userType == "student" ? "" : "Treinador"}  Luiz</Text>
                 
             <View style={styles.containerLine}>
                 <View style={styles.line}/>

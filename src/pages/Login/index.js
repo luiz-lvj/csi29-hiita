@@ -4,16 +4,25 @@ import { SafeAreaView, Text, StyleSheet, Image, View, TextInput, Alert } from 'r
 import { styles } from '../components/stylesLogin';
 
 
-export default function Login({ navigation }){
+export default function Login({ navigation, userType, setUserType }){
 
     const [userName, setUserName] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
-    async function handleLogin(){
+    console.log(userType)
+
+    async function handleLoginStudent(){
         // if(userName != "Luiz" || userPassword != "123"){
         //     Alert.alert("Erro", "Usuário ou senha inválidos");
         //     return;
         // }
+        setUserType('student');
+        navigation.navigate('Home');
+    }
+
+    async function handleLoginTeacher(){
+
+        setUserType('teacher');
         navigation.navigate('Home');
     }
 
@@ -47,10 +56,18 @@ export default function Login({ navigation }){
                 >
                     <View 
                     style={styles.buttonLogin}
-                    onStartShouldSetResponder={handleLogin}
+                    onStartShouldSetResponder={handleLoginStudent}
                     >
                         <Text style={styles.textLogin} 
-                        >login</Text>
+                        >login Aluno</Text>
+                    </View>
+
+                    <View 
+                    style={styles.buttonLogin}
+                    onStartShouldSetResponder={handleLoginTeacher}
+                    >
+                        <Text style={styles.textLogin} 
+                        >login Treinador</Text>
                     </View>
 
                     <View

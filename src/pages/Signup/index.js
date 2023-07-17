@@ -16,6 +16,9 @@ export default function Signup({ navigation }){
 
 
     function handleRegister(){
+        navigation.navigate('Login');
+        return
+
         if(userName == "" || userPassword == "" || cpf == 0 || email == ""){
             Alert.alert("Erro", "Preencha todos os campos");
             return;

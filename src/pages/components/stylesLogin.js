@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: '20%',
+        height: '16%',
         //make shadow bottom white with 2px
         borderBottomWidth: 3,
         borderBottomColor: '#FFFFFF',
@@ -71,8 +71,8 @@ export const styles = StyleSheet.create({
         paddingRight: "6%",
         alignItems: "center",
         textAlign: "center",
-        paddingBottom: '10%',
-        marginBottom: "10%"
+        paddingBottom: '20%',
+        marginBottom: "20%"
     },
     buttonLogin:{
         display: "flex",
